@@ -8,6 +8,7 @@ Um sistema para gerenciar despesas, receitas e investimentos.
 - Arquitetura em Microserviços (Backend + BFF).
 - Banco de dados PostgreSQL.
 - Integração com APIs externas (simulando integração com bancos).
+- Maven
 
 
 # Organizaremos os serviços em pastas separadas para cada microserviço:
