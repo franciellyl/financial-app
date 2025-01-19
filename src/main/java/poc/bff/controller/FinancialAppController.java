@@ -21,7 +21,6 @@ public class FinancialAppController {
 
     @GetMapping("/expenses")
     public ResponseEntity<List<ExpenseDto>> listAllExpenses(){
-
         var expenseResult = expenseService.getExpenses(1,1);
         return ResponseEntity.ok().body(expenseResult);
     }
@@ -29,5 +28,10 @@ public class FinancialAppController {
     @GetMapping("/income")
     public ResponseEntity<String> listAllIncomes(){
         return ResponseEntity.ok("Hi, Income!");
+    }
+
+    @GetMapping("/bank")
+    public ResponseEntity<String> bankIntegration(){
+        return ResponseEntity.ok().body("Oi");
     }
 }
