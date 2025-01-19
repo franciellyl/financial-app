@@ -1,6 +1,7 @@
 package poc.bff.service;
 
 import org.springframework.stereotype.Service;
+import poc.bff.dto.ExpenseDto;
 import poc.bff.entity.ExpenseEntity;
 import poc.bff.repository.ExpenseRepository;
 
@@ -14,9 +15,17 @@ public class ExpenseService {
         this.expenseRepository = expenseRepository;
     }
 
-    public List<ExpenseEntity> getExpenses(int limit, int page){
+    public List<ExpenseDto> getExpenses(int limit, int page){
         var expenseEntity = expenseRepository.findAll();
+        List<ExpenseDto> expenseDto = expenseEntity.stream().map(this::entityToDto).toList();
+        return expenseDto;
+    }
 
-        return expenseEntity;
+    private ExpenseDto entityToDto(ExpenseEntity entity){
+        return  ExpenseDto.builder()
+                .idDto(entity.getId())
+                .statusDto(entity.getStatus())
+                .dateDto(entity.getDate())
+                .valueDto(entity.getValue()).build();
     }
 }

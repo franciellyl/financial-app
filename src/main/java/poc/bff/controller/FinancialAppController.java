@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import poc.bff.dto.ExpenseDto;
 import poc.bff.entity.ExpenseEntity;
 import poc.bff.service.ExpenseService;
 
@@ -19,8 +20,14 @@ public class FinancialAppController {
     }
 
     @GetMapping("/expenses")
-    public ResponseEntity<List<ExpenseEntity>>sayHello(){
+    public ResponseEntity<List<ExpenseDto>> listAllExpenses(){
 
-        return ResponseEntity.ok(expenseService.getExpenses(0,0));
+        var expenseResult = expenseService.getExpenses(1,1);
+        return ResponseEntity.ok().body(expenseResult);
+    }
+
+    @GetMapping("/income")
+    public ResponseEntity<String> listAllIncomes(){
+        return ResponseEntity.ok("Hi, Income!");
     }
 }
